@@ -5,7 +5,7 @@
 This is not an official ClamAV tool. Use at your own risk.
 
 `clamdownloader.pl` is an enhanced version of the original ClamAV database downloader
-script.
+script by Frederic Vanden Poel.
 
 The script maintains a local mirror of ClamAV databases (`main.cvd`, `daily.cvd`,
 `bytecode.cvd`) with support for incremental updates, mirror fallback, and persistent
