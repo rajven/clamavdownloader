@@ -30,26 +30,23 @@ It is designed for **local or internal mirrors**
 
 ## Differences from the Original Script
 
-This script is based on the original `clamdownloader.pl` from:
+This script is based on the original `clamdownloader.pl` from Frederic Vanden Poel:
 
 The following enhancements and behavioral differences were introduced:
 
 ### 1. Persistent CDIFF Missing Cache
 
-**New behavior:**
 - Missing CDIFF files are permanently recorded in `cdiff_history.txt`
 - Once a CDIFF is known to be unavailable, it is never retried
 - Prevents repeated failed HTTP requests on every run
 
 ### 2. Multi-Mirror Fallback
 
-**New behavior:**
 - Multiple mirrors are defined for both `.cvd` and `.cdiff` downloads
 - Mirrors are tried sequentially until a successful download occurs
 
 ### 3. Robust Incremental Update Logic
 
-**New behavior:**
 - Sequential CDIFF download verification
 - If *any* required CDIFF is missing:
   - All partial CDIFFs are discarded
@@ -57,13 +54,11 @@ The following enhancements and behavioral differences were introduced:
 
 ### 4. If-Modified-Since Optimization
 
-**New behavior:**
 - Uses `If-Modified-Since` HTTP header when downloading full CVD files
 - Avoids unnecessary downloads if the file has not changed
 
 ### 5. Temporary File Safety
 
-**New behavior:**
 - All downloads are written to a temporary directory first
 - Files are only moved into place if:
   - They exist
@@ -72,7 +67,6 @@ The following enhancements and behavioral differences were introduced:
 
 ### 6. Command-Line Control
 
-**New behavior:**
 - `--skip-daily` option allows skipping `daily.cvd` updates
 
 ### 7. Intended Use Case
@@ -95,6 +89,7 @@ The following enhancements and behavioral differences were introduced:
 
 ## Directory Layout
 
+```
 clamav/
 ├── main.cvd
 ├── daily.cvd
@@ -105,6 +100,7 @@ clamav/
 │ └── *.cvd
 ├── dns.txt
 └── cdiff_history.txt
+```
 
 ## Usage
 
@@ -120,7 +116,7 @@ perl clamdownloader.pl
 perl clamdownloader.pl --skip-daily
 ```
 
-### Notes
+## Notes
 
 This script does not apply CDIFFs — ClamAV handles that internally
 
